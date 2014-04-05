@@ -1,0 +1,6 @@
+*.log
+*.gz
+*.pyc
+*.swp
+.DS_Store
+node_modules
