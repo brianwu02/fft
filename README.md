@@ -79,7 +79,20 @@ workflow descriptions for each particular component of application.
 #### Client data insertion process.
 use pipeline workflow?
     
-    1. nodeAPI server sends request to yahoo fantasy API.
+    1. client sends a 'state' object which defines the current state of angularJS application. 
+    
+    2. server parses state object and determines API calls both server and client need to make.
+    Return an obj list of API calls the client needs to make in order to sync. 
+    Server makes the following calls to:
+        
+        1. Yahoo Fantasy API for latest yahoo fantasy player & teams data.
+        2. PostgreSQL for latest yahoo rss feed, roto rss player feed, roto rss news feed.
+        3. PostgreSQL for latest nfl game stats.
+
+    Client makes the following calls to:
+        1. NodeAPI Server for latest fantasy team and player stats. 
+        2. NodeAPI server for latest 
+
 
     2. recieve data from yahoo fantasy API and pipe job using redis/zmq with work parameters
 
