@@ -63,7 +63,6 @@ workflow descriptions for each particular component of application.
     1. user logs in via facebook, google, etc or local login. start off only using passport login for ease.
 
     2. checks user credentials:
-    
         1. if new -> ask for yahoo oauth authentication and do a big batch process for pulling data
         2. if returning -> figure out what data needs to be pulled if any
         
@@ -77,7 +76,50 @@ workflow descriptions for each particular component of application.
 
 5. individual python worker processes
 
-use pipeline workflow? 
+#### Client data insertion process.
+use pipeline workflow?
+    
+    1. nodeAPI server sends request to yahoo fantasy API.
 
+    2. recieve data from yahoo fantasy API and pipe job using redis/zmq with work parameters
+
+    3. redis load balances and figures which python worker to send it to (just use 1 for now) 
+
+    4. python worker parses data and inserts in to mongoDB
+
+#### Client data retrieval process.
+
+    1. angularJS client hits nodeAPI server.
+
+    2. determine which socketIO data streams that client should subscribe to.
+
+    3. determine what restful db calls are required for client.
+
+    4. should client sends request directly to db or it ask nodeAPI server where it returns result? security concerns...
+
+    5. if using node as intermediate server, have nodeAPI server return results to angular client.
+
+    6. initiate socketIO data stream between angularJS client and nodeAPI server for real-time updates.
+
+#### real-time update data retrieval process.
+
+    1. real-time nfl stats scraping achieved using postgresql-nfldb module.
+
+    2. will probably need to implement a cache layer via redis or memcache since many clients would
+    be hitting the DB for the same data. (ugh so much work) so cache real-time nfl stats.
+
+    3. postgreSQL has trigger function that updates a global table with player status changes
+    e.g. injured -> active, active -> injured, active -> benched, etc.
+        
+        1. hard :(. If any of the user's Fantasy players on a Fantasy team status changes, let the client know
+        via socketIO data stream. In theory, client should see real-time player status changes. If the
+        changes are of high alert level e.g. active -> injured, send an email or something.
+
+    4. 'real-time' nfl news and player news achieved by rss scraping. news is a little old but who cares.
+    same as before, implement a cache layer since all clients will be pulling same data.
+
+    5. If everything works alright, the angularJS client should be able to figure out what socketIO data streams
+    that it needs to listen to, and what API calls to nodeAPI server that need to be made.
+    
 
 dont stay empty too long!
