@@ -1,6 +1,7 @@
 Fantasy Football Tracker README
 
-TODO:
+## todo.
+expand & reiterate required
 
 1. Setup Redis Pub/Sub:
     1. Subscribes to NodeJS jobs
@@ -47,6 +48,27 @@ TODO:
     1. write a socketIO service that can be injected into different modules.
     2. use angular-bootstrap and create a simple UI that displays data from socketIO service.
     3. stream real-time events via socketio service & 2 way data binding.
+
+
+## workflow
+workflow descriptions for each particular component of application.
+
+1. expressAPI server:
+    1. user logs in via facebook, google, etc or local login. start off only using passport login for ease.
+    2. checks user credentials:
+        1. if new -> ask for yahoo oauth authentication and do a big batch process for pulling data
+        2. if returning -> figure out what data needs to be pulled if any
+    3. 
+
+2. postgreSQL
+
+3. mongoDB
+
+4. Redis and or zeromq
+
+5. individual python worker processes
+
+
 
 
 dont stay empty too long!
