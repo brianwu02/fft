@@ -128,6 +128,7 @@ stuff i can start doing
 with passportJS credentials.
     
     I will be done when...
+
         1. testable API caller module is written. 
             1. export 
         2. 
