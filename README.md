@@ -29,10 +29,13 @@ expand & reiterate required
 3. Setup Python Worker that:
 
     1. parses JSON and adds to mongoDB or PostgreSQL w/ BSON support
+
     2. Does Worker process & send data back to node API server where it will push to mongoDB
     or does it communicate directly with mongoDB?
+
     3. After receiving job via redis andor zeromq subscribe, spawn gevent threads to 
     asynchronously parse + store in db
+
         1. recieve all jobs and store in queue
         2. dynamically generate functions for all jobs and push onto event queue
         3. gevent.spawn(all threads) and store all results in a final list, pretty much map & reduce
@@ -40,8 +43,10 @@ expand & reiterate required
         remember that nodeAPI server will push many jobs per event but should probably group up state change to one db call.
 
 4. Setup mongoDB or PostgreSQL.
+
     1. store user information in psql or mongo? most likely in mongo since easier
     using passport-yahoo, google, facebook login... or store as json in postgres.
+
     2. 
 
 5. AngularJS with the following:
@@ -54,10 +59,14 @@ expand & reiterate required
 workflow descriptions for each particular component of application.
 
 1. expressAPI server:
+
     1. user logs in via facebook, google, etc or local login. start off only using passport login for ease.
+
     2. checks user credentials:
+    
         1. if new -> ask for yahoo oauth authentication and do a big batch process for pulling data
         2. if returning -> figure out what data needs to be pulled if any
+        
     3. 
 
 2. postgreSQL
@@ -68,7 +77,7 @@ workflow descriptions for each particular component of application.
 
 5. individual python worker processes
 
-
+use pipeline workflow? 
 
 
 dont stay empty too long!
