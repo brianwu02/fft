@@ -120,6 +120,19 @@ use pipeline workflow?
 
     5. If everything works alright, the angularJS client should be able to figure out what socketIO data streams
     that it needs to listen to, and what API calls to nodeAPI server that need to be made.
+
+## task list 
+stuff i can start doing
+
+1. get expressJS, passport-yahoo oauth, request lib, working so that I can make API calls to yahoo with
+with passportJS credentials.
     
+    I will be done when...
+        1. testable API caller module is written. 
+            1. export 
+        2. 
+
+2. 
+
 
 dont stay empty too long!
