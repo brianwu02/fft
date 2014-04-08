@@ -89,6 +89,7 @@ expand & reiterate required
             }
 
 
+        Example
 
             Fantasy Team Scores Document (parsed)
             {
