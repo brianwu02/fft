@@ -45,8 +45,12 @@ expand & reiterate required
 
 4. Setup mongoDB or PostgreSQL.
 
+
     1. store user information in psql or mongo? most likely in mongo since easier
     using passport-yahoo, google, facebook login... or store as json in postgres.
+    
+    1. store all user information: google, yahoo, facebook session and metadata in mongodb.
+
 
     2. for each user, store:
         1. fantasy team(s)
