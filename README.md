@@ -43,20 +43,16 @@ expand & reiterate required
         4. initiate connection with database and send all parsed data at once. 
         remember that nodeAPI server will push many jobs per event but should probably group up state change to one db call.
 
-4. Setup mongoDB or PostgreSQL.
+4. Setup mongoDB and PostgreSQL.
 
-
-    1. store user information in psql or mongo? most likely in mongo since easier
-    using passport-yahoo, google, facebook login... or store as json in postgres.
+    1. store all user login information: google, yahoo, facebook session and metadata in mongodb.
     
-    1. store all user information: google, yahoo, facebook session and metadata in mongodb.
-
-
-    2. for each user, store:
-        1. fantasy team(s)
-        2. fantasy players
-        3. fantasy team score for particular week
-        4. fantasy player score for that particular week
+    2. for each user in mongodb, store:
+        1. fantasy leagues
+        2. fantasy team(s)
+        3. fantasy players
+        4. fantasy team score for particular week
+        5. fantasy player score for that particular week
 
     3. use mongodb time series pattern:
     
