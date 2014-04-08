@@ -61,17 +61,45 @@ expand & reiterate required
         each time the user 'refreshes' their team, we append their fantasy scores for the week 
         under values. anytime the client needs to pull data, take the latest value.
 
-            Fantasy Team Scores Document
+            Fantasy League Document (parsed)
             {
-                fantasy_team_id: 001,
+                _id: 1234,
+                yahoo_league_id: 001,
 
-                fantasy_team_name: 'loser league',
+                yahoo_league_name: 'winners league',
 
-                team_owner_id: {
+                yahoo_league_size: 12,
+
+                creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+
+                yahoo_teams: {
+                    // holds yahoo_team_id values for particular league.
+                    // store as time series? teams shouldn't change but who knows
+                    0: {
+                        0: 0000,
+                        .
+                        11: 0011,
+                    },
+                    1: {
+                        0: 0000,
+                        .
+                        11: 0012,
+                    }
+                }
+            }
+
+            Fantasy Team Scores Document (parsed)
+            {
+                _id: 2345,
+                yahoo_team_id: 001,
+
+                yahoo_team_name: 'loser league',
+
+                yahoo_owner_id: {
                     owner_1: 001,
                     owner_2: 002
                 }
-                fantasy_league_id: 001,
+                yahoo_league_id: 001,
 
                 week_number: 16,
 
