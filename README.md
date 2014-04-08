@@ -61,7 +61,15 @@ expand & reiterate required
 
             {
                 fantasy_team_id: 001,
+
+                team_owner_id: {
+                    owner_1: 001,
+                    owner_2: 002
+                }
+                fantasy_league_id: 001,
+
                 week_number: 16,
+
                 creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
 
                 values: {
