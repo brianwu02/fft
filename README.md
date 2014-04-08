@@ -61,7 +61,8 @@ expand & reiterate required
         each time the user 'refreshes' their team, we append their fantasy scores for the week 
         under values. anytime the client needs to pull data, take the latest value.
 
-        **Fantasy League Document (parsed)((
+        **Fantasy League Document (parsed)**
+
             {
                 _id: 1234,
                 yahoo_league_id: 001,
@@ -90,6 +91,7 @@ expand & reiterate required
 
 
         **Fantasy Team Scores Document (parsed)**
+
             {
                 _id: 2345,
                 yahoo_team_id: 001,
