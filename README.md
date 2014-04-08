@@ -59,30 +59,29 @@ expand & reiterate required
         each time the user 'refreshes' their team, we append their fantasy scores for the week 
         under values. anytime the client needs to pull data, take the latest value.
 
-        
-        {
-            fantasy_team_id: 001,
-            week_number: 16,
-            creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+            {
+                fantasy_team_id: 001,
+                week_number: 16,
+                creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
 
-            values: {
-                0: {
-                    creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-                    'reggie bush': 10,
-                    'peyton manning': 25,
-                    .
-                    .
-                },
-                1: {
-                    creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-                    'reggie bush': 11,
-                    'peyton manning': 25,
-                    .
-                    .
+                values: {
+                    0: {
+                        creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                        'reggie bush': 10,
+                        'peyton manning': 25,
+                        .
+                        .
+                    },
+                    1: {
+                        creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                        'reggie bush': 11,
+                        'peyton manning': 25,
+                        .
+                        .
+                    }
                 }
+                otherMetaData: { }
             }
-            otherMetaData: { }
-        }
 
 
             
