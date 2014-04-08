@@ -29,7 +29,7 @@ expand & reiterate required
 
 3. Setup Python Worker that:
 
-    1. parses JSON and adds to mongoDB or PostgreSQL w/ BSON support
+    1. parses JSON retrieved from Yahoo Fantasy Sports API and adds to mongoDB.
 
     2. Does Worker process & send data back to node API server where it will push to mongoDB
     or does it communicate directly with mongoDB?
@@ -61,7 +61,27 @@ expand & reiterate required
         each time the user 'refreshes' their team, we append their fantasy scores for the week 
         under values. anytime the client needs to pull data, take the latest value.
 
-        **Fantasy League Document (parsed)**
+        **Yahoo Fantasy League Document (unparsed straight from yahoo)**
+            
+            {
+                _id: 3456,
+                timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                season_year: 2012,
+
+                values: {
+                    0: {
+                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                        data: unparsed Yahoo JSON
+                    },
+                    .
+                    2: {
+                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                        data: unparsed Yahoo JSON
+                    }
+                }
+            }
+
+        **Yahoo Fantasy League Document (parsed)**
 
             {
                 _id: 1234,
@@ -71,7 +91,7 @@ expand & reiterate required
 
                 yahoo_league_size: 12,
 
-                creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                timestamp: ISODate("2013-10-10T23:00:00.000Z"),
 
                 yahoo_teams: {
                     // holds yahoo_team_id values for particular league.
@@ -90,7 +110,7 @@ expand & reiterate required
             }
 
 
-        **Fantasy Team Scores Document (parsed)**
+        **Yahoo Fantasy Team Scores Document (parsed)**
 
             {
                 _id: 2345,
@@ -103,21 +123,22 @@ expand & reiterate required
                     owner_2: 002
                 }
                 yahoo_league_id: 001,
-
+                
+                // create a new document for every week to prevent document from increasing in size too much.
                 week_number: 16,
 
-                creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                timestamp: ISODate("2013-10-10T23:00:00.000Z"),
 
                 values: {
                     0: {
-                        creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
                         'reggie bush': 10,
                         'peyton manning': 25,
                         .
                         .
                     },
                     1: {
-                        creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
                         'reggie bush': 11,
                         'peyton manning': 25,
                         .
