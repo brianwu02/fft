@@ -46,13 +46,15 @@ expand & reiterate required
 4. Setup mongoDB and PostgreSQL.
 
     1. store all user login information: google, yahoo, facebook session and metadata in mongodb.
+    Will store unparsed copies of Yahoo JSON AND parsed copies. This way, if we decide to change 
+    application architecture to use more data from YahooJSON, we don't have to throw the entire DB away.
     
     2. for each user in mongodb, store:
-        1. fantasy leagues
-        2. fantasy team(s)
-        3. fantasy players
-        4. fantasy team score for particular week
-        5. fantasy player score for that particular week
+        1. fantasy league(s): losers league, winners league.
+        2. fantasy team(s): team1 in losers league, team2 in winners league.
+        3. fantasy players: peyton manning on team1, dexter mcCluster on team2.
+        4. fantasy team score for particular week: team1: 69pts, team2: 35pts.
+        5. fantasy player score for that particular week: peyton: 25, McCluster: 1.
 
     3. use mongodb time series pattern:
     
