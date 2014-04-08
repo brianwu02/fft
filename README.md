@@ -44,6 +44,7 @@ expand & reiterate required
         remember that nodeAPI server will push many jobs per event but should probably group up state change to one db call.
 
 4. Setup mongoDB and PostgreSQL.
+    [Wiki link for Database Objects](https://github.com/brianwu02/fft/wiki/database-object-details)
 
     1. store all user login information: google, yahoo, facebook session and metadata in mongodb.
     Will store unparsed copies of Yahoo JSON AND parsed copies. This way, if we decide to change 
@@ -56,100 +57,7 @@ expand & reiterate required
         4. fantasy team score for particular week: team1: 69pts, team2: 35pts.
         5. fantasy player score for that particular week: peyton: 25, McCluster: 1.
 
-    3. use mongodb time series pattern:
-    
-        each time the user 'refreshes' their team, we append their fantasy scores for the week 
-        under values. anytime the client needs to pull data, take the latest value.
-
-        **Yahoo Fantasy League Document (unparsed straight from yahoo)**
-            
-            {
-                _id: 3456,
-                timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-                season_year: 2012,
-
-                values: {
-                    0: {
-                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-                        data: unparsed Yahoo JSON
-                    },
-                    .
-                    2: {
-                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-                        data: unparsed Yahoo JSON
-                    }
-                }
-            }
-
-        **Yahoo Fantasy League Document (parsed)**
-
-            {
-                _id: 1234,
-                yahoo_league_id: 001,
-
-                yahoo_league_name: 'winners league',
-
-                yahoo_league_size: 12,
-
-                timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-
-                yahoo_teams: {
-                    // holds yahoo_team_id values for particular league.
-                    // store as time series? teams shouldn't change but who knows
-                    0: {
-                        0: 0000,
-                        .
-                        11: 0011,
-                    },
-                    1: {
-                        0: 0000,
-                        .
-                        11: 0012,
-                    }
-                }
-            }
-
-
-        **Yahoo Fantasy Team Scores Document (parsed)**
-
-            {
-                _id: 2345,
-                yahoo_team_id: 001,
-
-                yahoo_team_name: 'loser league',
-
-                yahoo_owner_id: {
-                    owner_1: 001,
-                    owner_2: 002
-                }
-                yahoo_league_id: 001,
-                
-                // create a new document for every week to prevent document from increasing in size too much.
-                week_number: 16,
-
-                timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-
-                values: {
-                    0: {
-                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-                        'reggie bush': 10,
-                        'peyton manning': 25,
-                        .
-                        .
-                    },
-                    1: {
-                        timestamp: ISODate("2013-10-10T23:00:00.000Z"),
-                        'reggie bush': 11,
-                        'peyton manning': 25,
-                        .
-                        .
-                    }
-                }
-                otherMetaData: { }
-            }
-
-
-            
+    3. use mongodb time series pattern.
 
 5. AngularJS with the following:
     1. write a socketIO service that can be injected into different modules.
