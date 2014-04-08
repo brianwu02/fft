@@ -1,4 +1,8 @@
-Fantasy Football Tracker README
+## wiki links
+
+1. [Database Objects](https://github.com/brianwu02/fft/wiki/database-object-details)
+2. [Current PostgreSQL Implementation](https://github.com/brianwu02/fft/wiki/Current-PostgreSQL-database-schema)
+
 
 ## todo.
 expand & reiterate required
@@ -44,7 +48,7 @@ expand & reiterate required
         remember that nodeAPI server will push many jobs per event but should probably group up state change to one db call.
 
 4. Setup mongoDB and PostgreSQL.
-    [Wiki link for Database Objects](https://github.com/brianwu02/fft/wiki/database-object-details)
+
 
     1. store all user login information: google, yahoo, facebook session and metadata in mongodb.
     Will store unparsed copies of Yahoo JSON AND parsed copies. This way, if we decide to change 
