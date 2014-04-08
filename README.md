@@ -61,8 +61,11 @@ expand & reiterate required
         each time the user 'refreshes' their team, we append their fantasy scores for the week 
         under values. anytime the client needs to pull data, take the latest value.
 
+            Fantasy Team Scores Document
             {
                 fantasy_team_id: 001,
+
+                fantasy_team_name: 'loser league',
 
                 team_owner_id: {
                     owner_1: 001,
