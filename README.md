@@ -6,6 +6,7 @@ expand & reiterate required
 1. Setup Redis Pub/Sub:
     1. Subscribes to NodeJS jobs
     2. Publishes to listening Python Workers.
+    3. store expressJS cookie sessions in redis.
 
 2. Setup ExpressJS Node RESTful API server that will:
 
@@ -47,7 +48,44 @@ expand & reiterate required
     1. store user information in psql or mongo? most likely in mongo since easier
     using passport-yahoo, google, facebook login... or store as json in postgres.
 
-    2. 
+    2. for each user, store:
+        1. fantasy team(s)
+        2. fantasy players
+        3. fantasy team score for particular week
+        4. fantasy player score for that particular week
+
+    3. use mongodb time series pattern:
+    
+        each time the user 'refreshes' their team, we append their fantasy scores for the week 
+        under values. anytime the client needs to pull data, take the latest value.
+
+        
+        {
+            fantasy_team_id: 001,
+            week_number: 16,
+            creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+
+            values: {
+                0: {
+                    creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                    'reggie bush': 10,
+                    'peyton manning': 25,
+                    .
+                    .
+                },
+                1: {
+                    creation_timestamp: ISODate("2013-10-10T23:00:00.000Z"),
+                    'reggie bush': 11,
+                    'peyton manning': 25,
+                    .
+                    .
+                }
+            }
+            otherMetaData: { }
+        }
+
+
+            
 
 5. AngularJS with the following:
     1. write a socketIO service that can be injected into different modules.
