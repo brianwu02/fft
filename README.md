@@ -3,7 +3,6 @@
 1. [Database Objects](https://github.com/brianwu02/fft/wiki/database-object-details)
 2. [Current PostgreSQL Implementation](https://github.com/brianwu02/fft/wiki/Current-PostgreSQL-database-schema)
 
-
 ## todo.
 expand & reiterate required
 
