@@ -1,6 +1,6 @@
 ## wiki links
 
-1. [Database Objects](https://github.com/brianwu02/fft/wiki/database-object-details)
+1. [Proposed Database Objects](https://github.com/brianwu02/fft/wiki/database-object-details)
 2. [Current PostgreSQL Implementation](https://github.com/brianwu02/fft/wiki/Current-PostgreSQL-database-schema)
 
 ## todo.
@@ -155,9 +155,9 @@ with passportJS credentials.
     
     I will be done when...
 
-        1. testable API caller module is written. 
-            1. export 
-        2. 
+        1. testable API caller module that:
+            1. has methods for each API call to Yahoo Fantasy Sports.
+            2. store oauth credential in mongoDB.
 
 2. 
 
