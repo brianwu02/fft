@@ -2,6 +2,7 @@
 
 1. [Proposed Database Objects](https://github.com/brianwu02/fft/wiki/database-object-details)
 2. [Current PostgreSQL Implementation](https://github.com/brianwu02/fft/wiki/Current-PostgreSQL-database-schema)
+3. [Data to be parsed from Yahoo Fantasy Sports API](https://github.com/brianwu02/fft/wiki/NFL-Fantasy-Stats-that-we-need-to-track)
 
 ## todo.
 expand & reiterate required
